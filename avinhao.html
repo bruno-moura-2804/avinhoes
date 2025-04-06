@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avinhõezinhos de Combate Russos | Aviação Militar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #e63946;
+            --secondary: #f1faee;
+            --dark: #1d3557;
+            --darker: #0a1128;
+            --metal: #a8dadc;
+            --gray: #457b9d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--darker);
+            color: var(--secondary);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Efeito de turbina ao carregar */
+        @keyframes turbineStart {
+            0% { opacity: 0; transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        body.loaded {
+            animation: turbineStart 1.5s ease-out;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(rgba(10, 17, 40, 0.9), rgba(10, 17, 40, 0.7)), 
+                        url('https://images.unsplash.com/photo-1581093196270-1a1d1b7f0a7d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 2rem;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
+            letter-spacing: 0.3rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .logo-subtitle {
+            font-size: 1.5rem;
+            color: var(--metal);
+            margin-bottom: 2rem;
+            letter-spacing: 0.2rem;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--metal);
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-20px) translateX(-50%); }
+            60% { transform: translateY(-10px) translateX(-50%); }
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(10, 17, 40, 0.9);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--primary);
+        }
+
+        .nav-logo {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 0.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Seções */
+        section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* História */
+        #historia {
+            background: linear-gradient(rgba(10, 17, 40, 0.9), rgba(10, 17, 40, 0.9)), 
+                        url('https://i.imgur.com/HlEbcuA.jpeg') no-repeat center center/cover;
+            clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+            margin-top: -5rem;
+            padding-bottom: 10rem;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: var(--secondary);
+            border: 4px solid var(--primary);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid var(--primary);
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent var(--primary);
+        }
+
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid var(--primary);
+            border-width: 10px 10px 10px 0;
+            border-color: transparent var(--primary) transparent transparent;
+        }
+
+        .right::after {
+            left: -16px;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: rgba(29, 53, 87, 0.7);
+            position: relative;
+            border-radius: 6px;
+            border-left: 3px solid var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .right .timeline-content {
+            border-left: none;
+            border-right: 3px solid var(--primary);
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.03);
+        }
+
+        .timeline-year {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        /* Galeria */
+        #galeria {
+            background: linear-gradient(rgba(10, 17, 40, 0.9), rgba(10, 17, 40, 0.9)), 
+                        url('https://i.imgur.com/HlEbcuA.jpeg') no-repeat center center/cover;
+            clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+            margin-top: -5rem;
+            padding-bottom: 10rem;
+        }
+
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            height: 250px;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.5);
+        }
+
+        .gallery-item img, .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img, .gallery-item:hover video {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 17, 40, 0.8);
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        
+
+        /* Tecnologia */
+        #tecnologia {
+            background-color: var(--dark);
+            clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+            margin-top: -5rem;
+            padding-bottom: 10rem;
+        }
+
+        .tech-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .tech-card {
+            background: rgba(69, 123, 157, 0.2);
+            border-radius: 10px;
+            padding: 2rem;
+            border: 1px solid var(--gray);
+            transition: all 0.3s ease;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.3);
+            border-color: var(--primary);
+        }
+
+        .tech-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .tech-title {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-description {
+            line-height: 1.6;
+        }
+
+        /* Comparações */
+        #comparacoes {
+            background: linear-gradient(rgba(10, 17, 40, 0.9), rgba(10, 17, 40, 0.9)), 
+                        url('https://i.imgur.com/HlEbcuA.jpeg') no-repeat center center/cover;
+            clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+            margin-top: -5rem;
+            padding-bottom: 10rem;
+        }
+
+        .comparison-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            background: rgba(29, 53, 87, 0.7);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid var(--gray);
+        }
+
+        th {
+            background-color: var(--primary);
+            color: var(--secondary);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(69, 123, 157, 0.2);
+        }
+
+        .country-flag {
+            width: 40px;
+            height: auto;
+            vertical-align: middle;
+            margin-right: 0.5rem;
+        }
+
+        .best {
+            background-color: rgba(230, 57, 70, 0.3);
+            font-weight: bold;
+        }
+
+
+        /* Footer */
+        footer {
+            background-color: var(--darker);
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-link {
+            color: var(--secondary);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            color: var(--metal);
+            font-size: 0.9rem;
+        }
+
+        /* Botão de voltar ao topo */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: #c1121f;
+            transform: translateY(-5px);
+        }
+
+        /* Responsividade */
+        @media screen and (max-width: 768px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+
+            .logo-subtitle {
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: rgba(10, 17, 40, 0.98);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 2rem;
+                transition: left 0.3s ease;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .hamburger {
+                display: block;
+                color: var(--secondary);
+                font-size: 1.5rem;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-container::before {
+                left: 60px;
+                border: medium solid var(--primary);
+                border-width: 10px 10px 10px 0;
+                border-color: transparent var(--primary) transparent transparent;
+            }
+
+            .left::after, .right::after {
+                left: 15px;
+            }
+
+            .right {
+                left: 0%;
+            }
+        }
+
+        /* Animação de rolagem suave */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-logo">ACR</div>
+        <ul class="nav-links">
+            <li><a href="#historia">História</a></li>
+            <li><a href="#galeria">Galeria</a></li>
+            <li><a href="#tecnologia">Tecnologia</a></li>
+            <li><a href="#comparacoes">Comparações</a></li>
+        </ul>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <h1 class="logo">Avinhões de Combate Russos</h1>
+        <p class="logo-subtitle">DOMÍNIO AÉREO E TECNOLOGIA MILITAR</p>
+        <a href="#historia" class="scroll-down"><i class="fas fa-chevron-down"></i></a>
+    </header>
+
+    <!-- História -->
+    <section id="historia">
+        <h2 class="section-title fade-in">História da Aviação Militar Russa</h2>
+        <div class="timeline">
+            <div class="timeline-container left fade-in">
+                <div class="timeline-content">
+                    <h3 class="timeline-year">1940-1950</h3>
+                    <p>Era dos primeiros jatos soviéticos como o MiG-9 e MiG-15, que se destacaram na Guerra da Coreia contra os F-86 Sabre americanos.</p>
+                </div>
+            </div>
+            <div class="timeline-container right fade-in">
+                <div class="timeline-content">
+                    <h3 class="timeline-year">1960</h3>
+                    <p>Desenvolvimento do icônico MiG-21, o caça supersônico mais produzido da história, com mais de 11,000 unidades construídas.</p>
+                </div>
+            </div>
+            <div class="timeline-container left fade-in">
+                <div class="timeline-content">
+                    <h3 class="timeline-year">1970</h3>
+                    <p>Introdução do Su-27 Flanker, um caça de superioridade aérea que estabeleceu novos padrões de manobrabilidade e alcance.</p>
+                </div>
+            </div>
+            <div class="timeline-container right fade-in">
+                <div class="timeline-content">
+                    <h3 class="timeline-year">1980</h3>
+                    <p>Desenvolvimento do MiG-29 Fulcrum, um caça multiuso altamente ágil projetado para combate aéreo aproximado.</p>
+                </div>
+            </div>
+            <div class="timeline-container left fade-in">
+                <div class="timeline-content">
+                    <h3 class="timeline-year">2000</h3>
+                    <p>Introdução do Su-35, uma evolução radical do Su-27 com aviônicos modernos e motores com empuxo vetorial.</p>
+                </div>
+            </div>
+            <div class="timeline-container right fade-in">
+                <div class="timeline-content">
+                    <h3 class="timeline-year">2010</h3>
+                    <p>Primeiro voo do Su-57 Felon, o primeiro caça stealth de quinta geração da Rússia, com tecnologia furtiva e armamentos internos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria -->
+    <section id="galeria">
+        <h2 class="section-title fade-in">Galeria</h2>
+        <div class="gallery-container">
+            <div class="gallery-item fade-in">
+                <img src="https://i.imgur.com/nzOhmpN.jpeg" alt="Su-57 em voo">
+                <div class="gallery-caption">
+                    <h3>Su-57 em voo de teste</h3>
+                </div>
+            </div>
+            <div class="gallery-item fade-in">
+                <video autoplay loop muted>
+                    <source src="videos/avinhaolento.mp4" type="video/mp4">
+                </video>
+                <div class="video-icon"><i class="fas fa-play"></i></div>
+                <div class="gallery-caption">
+                    <h3>Decolagem em câmera lenta</h3>
+                </div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://i.imgur.com/P1vlT1T.jpeg" alt="Formação de Su-35">
+                <div class="gallery-caption">
+                    <h3>Formação de Su-35</h3>
+                </div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://i.imgur.com/j66k8N6.jpeg" alt="MiG-29 em manobra">
+                <div class="gallery-caption">
+                    <h3>MiG-29 em manobra acrobática</h3>
+                </div>
+            </div>
+            <div class="gallery-item fade-in">
+                <video autoplay loop muted>
+                    <source src="videos/achououtro.mp4" type="video/mp4">
+                </video>
+                <div class="video-icon"><i class="fas fa-play"></i></div>
+                <div class="gallery-caption">
+                    <h3>Interceptação aérea</h3>
+                </div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://i.imgur.com/LSQiLFW.jpeg" alt="Su-27 em exibição">
+                <div class="gallery-caption">
+                    <h3>Su-27 em exibição aérea</h3>
+                </div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://i.imgur.com/U4dTFZF.jpeg" alt="Putin em cima de um urso">
+                <div class="gallery-caption">
+                    <h3>Putin em cima de um urso</h3>
+                </div>
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://i.imgur.com/KlUwJPg.jpeg" alt="Jair Messias Bolsonaro Kwaii (⁎˃ᴗ˂⁎)">
+                <div class="gallery-caption">
+                    <h3>Jair Messias Bolsonaro Kwaii (⁎˃ᴗ˂⁎)</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tecnologia -->
+    <section id="tecnologia">
+        <h2 class="section-title fade-in">Tecnologia e Inovação</h2>
+        <div class="tech-container">
+            <div class="tech-card fade-in">
+                <div class="tech-icon"><i class="fas fa-eye-slash"></i></div>
+                <h3 class="tech-title">Tecnologia Stealth</h3>
+                <p class="tech-description">Os caças russos modernos incorporam materiais absorventes de radar, design furtivo e armazenamento interno de armas para reduzir sua assinatura radar.</p>
+            </div>
+            <div class="tech-card fade-in">
+                <div class="tech-icon"><i class="fa-solid fa-satellite-dish"></i></div>
+                <h3 class="tech-title">Sistemas de Radar Avançados</h3>
+                <p class="tech-description">Radares AESA (Active Electronically Scanned Array) como o N036 Byelka do Su-57 oferecem detecção de longo alcance e rastreamento de múltiplos alvos.</p>
+            </div>
+            <div class="tech-card fade-in">
+                <div class="tech-icon"><i class="fas fa-fighter-jet"></i></div>
+                <h3 class="tech-title">Empuxo Vetorial</h3>
+                <p class="tech-description">Motores como o AL-41F1S do Su-35 possuem empuxo vetorial 3D, permitindo manobras extremas como a "Cobra de Pugachev".</p>
+            </div>
+            <div class="tech-card fade-in">
+                <div class="tech-icon"><i class="fa-solid fa-gun"></i></div>
+                <h3 class="tech-title">Armamentos Avançados</h3>
+                <p class="tech-description">Mísseis como o R-37M (alcance de 300+ km) e o Kh-47M2 Kinzhal (hipersônico) dão aos caças russos capacidades de engajamento únicas.</p>
+            </div>
+            <div class="tech-card fade-in">
+                <div class="tech-icon"><i class="fas fa-network-wired"></i></div>
+                <h3 class="tech-title">Warfare Digital</h3>
+                <p class="tech-description">Sistemas como o Himalaya do Su-57 permitem que o caça atue como um "nó" em rede, compartilhando dados com outras plataformas em tempo real.</p>
+            </div>
+            <div class="tech-card fade-in">
+                <div class="tech-icon"><i class="fas fa-robot"></i></div>
+                <h3 class="tech-title">IA e Autonomia</h3>
+                <p class="tech-description">O Su-57 incorpora sistemas de inteligência artificial para auxílio ao piloto em situações de combate e gerenciamento de sistemas complexos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparações -->
+    <section id="comparacoes">
+        <h2 class="section-title fade-in">Comparações</h2>
+        <div class="comparison-container fade-in">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Característica</th>
+                        <th><img src="https://flagcdn.com/w40/ru.png" class="country-flag" alt="Rússia"> Su-57</th>
+                        <th><img src="https://flagcdn.com/w40/us.png" class="country-flag" alt="EUA"> F-22</th>
+                        <th><img src="https://flagcdn.com/w40/cn.png" class="country-flag" alt="China"> J-20</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Geração</td>
+                        <td class="best">5ª</td>
+                        <td class="best">5ª</td>
+                        <td>5ª</td>
+                    </tr>
+                    <tr>
+                        <td>Velocidade Máxima (km/h)</td>
+                        <td class="best">2.600</td>
+                        <td>2.410</td>
+                        <td>2.100</td>
+                    </tr>
+                    <tr>
+                        <td>Alcance (km)</td>
+                        <td class="best">3.500</td>
+                        <td>2.960</td>
+                        <td>2.000</td>
+                    </tr>
+                    <tr>
+                        <td>Teto (m)</td>
+                        <td>20.000</td>
+                        <td class="best">20.100</td>
+                        <td>18.000</td>
+                    </tr>
+                    <tr>
+                        <td>Armamento Interno</td>
+                        <td class="best">4+ mísseis</td>
+                        <td class="best">4+ mísseis</td>
+                        <td>4 mísseis</td>
+                    </tr>
+                    <tr>
+                        <td>Custo (milhões USD)</td>
+                        <td class="best">42</td>
+                        <td>150</td>
+                        <td>110</td>
+                    </tr>
+                    <tr>
+                        <td>Empuxo Vetorial</td>
+                        <td class="best">Sim (3D)</td>
+                        <td>Não</td>
+                        <td>Não</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Footer -->
+<footer>
+    <div class="social-links">
+        <a href="https://github.com/bruno-moura-2804" class="social-link" target="_blank">
+            <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/bruno-henrique2804" class="social-link" target="_blank">
+            <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://www.instagram.com/bh.moura28?igsh=cmY1d2kyZ3pheDhl" class="social-link" target="_blank">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+</footer>
+
+        </div>
+        <p class="copyright">© 2025 Avinhões de Combate Russos. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Botão de voltar ao topo -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Efeito sonoro opcional
+        document.addEventListener('DOMContentLoaded', function() {
+            const engineSound = document.getElementById('engineSound');
+            engineSound.volume = 0.3;
+            
+            // Opção para tocar o som quando o usuário interagir com a página
+            document.addEventListener('click', function() {
+                engineSound.play().catch(e => console.log("Autoplay prevented"));
+            }, { once: true });
+            
+            // Marcar o body como carregado para a animação
+            document.body.classList.add('loaded');
+        });
+
+        // Navbar mobile
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Scroll suave para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Botão de voltar ao topo
+        const backToTopButton = document.querySelector('.back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('active');
+            } else {
+                backToTopButton.classList.remove('active');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Animação de aparecimento ao rolar
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Verificar elementos visíveis ao carregar
+        fadeInOnScroll();
+
+        // Verificar elementos visíveis ao rolar
+        window.addEventListener('scroll', fadeInOnScroll);
+    </script>
+</body>
+</html>
