@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Avinhõezinhos de Combate Russos | Aviação Militar</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
@@ -187,6 +187,7 @@
             clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
             margin-top: -5rem;
             padding-bottom: 10rem;
+            background-attachment: fixed;
         }
 
         .timeline {
@@ -289,6 +290,75 @@
             font-size: 1.5rem;
         }
 
+        /* Modelos de Caças */
+        #modelos {
+            background: linear-gradient(rgba(10, 17, 40, 0.9), rgba(10, 17, 40, 0.9)), 
+                        url('https://i.imgur.com/HlEbcuA.jpeg') no-repeat center center/cover;
+            clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+            margin-top: -5rem;
+            padding-bottom: 10rem;
+            background-attachment: fixed;
+        }
+
+        .fighters-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            padding: 0 1rem;
+        }
+
+        .fighter-card {
+            background: rgba(29, 53, 87, 0.7);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid var(--gray);
+        }
+
+        .fighter-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.3);
+            border-color: var(--primary);
+        }
+
+        .fighter-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .fighter-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .fighter-card:hover .fighter-image img {
+            transform: scale(1.1);
+        }
+
+        .fighter-info {
+            padding: 1.5rem;
+        }
+
+        .fighter-info h3 {
+            color: var(--primary);
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .fighter-info p {
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .fighter-info p strong {
+            color: var(--metal);
+        }
+
         /* Galeria */
         #galeria {
             background: linear-gradient(rgba(10, 17, 40, 0.9), rgba(10, 17, 40, 0.9)), 
@@ -296,6 +366,7 @@
             clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
             margin-top: -5rem;
             padding-bottom: 10rem;
+            background-attachment: fixed;
         }
 
         .gallery-container {
@@ -344,8 +415,6 @@
         .gallery-item:hover .gallery-caption {
             transform: translateY(0);
         }
-
-        
 
         /* Tecnologia */
         #tecnologia {
@@ -401,6 +470,7 @@
             clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
             margin-top: -5rem;
             padding-bottom: 10rem;
+            background-attachment: fixed;
         }
 
         .comparison-container {
@@ -443,7 +513,6 @@
             background-color: rgba(230, 57, 70, 0.3);
             font-weight: bold;
         }
-
 
         /* Footer */
         footer {
@@ -569,6 +638,16 @@
             .right {
                 left: 0%;
             }
+
+            /* Ajustes para mobile nos backgrounds */
+            #historia, #galeria, #comparacoes, #modelos {
+                background-attachment: scroll;
+                background-size: cover;
+            }
+
+            .fighters-container {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Animação de rolagem suave */
@@ -594,6 +673,7 @@
         <div class="nav-logo">ACR</div>
         <ul class="nav-links">
             <li><a href="#historia">História</a></li>
+            <li><a href="#modelos">Modelos</a></li>
             <li><a href="#galeria">Galeria</a></li>
             <li><a href="#tecnologia">Tecnologia</a></li>
             <li><a href="#comparacoes">Comparações</a></li>
@@ -653,6 +733,121 @@
         </div>
     </section>
 
+    <!-- Modelos de Caças -->
+    <section id="modelos">
+        <h2 class="section-title fade-in">Principais Modelos Russos</h2>
+        <div class="fighters-container">
+            <div class="fighter-card fade-in">
+                <div class="fighter-image">
+                    <img src="https://i.imgur.com/nzOhmpN.jpeg" alt="Su-57 Felon">
+                </div>
+                <div class="fighter-info">
+                    <h3>Su-57 Felon</h3>
+                    <p><strong>Geração:</strong> 5ª</p>
+                    <p><strong>Função:</strong> Caça de superioridade aérea stealth</p>
+                    <p><strong>Velocidade:</strong> Mach 2.0</p>
+                    <p><strong>Armamento:</strong> Mísseis R-37M, canhão GSh-30-1</p>
+                    <p>O Su-57 é o primeiro caça stealth de quinta geração da Rússia, com tecnologia furtiva, sistemas de guerra eletrônica avançados e capacidade de operar em rede com outras plataformas.</p>
+                </div>
+            </div>
+            
+            <div class="fighter-card fade-in">
+                <div class="fighter-image">
+                    <img src="https://i.imgur.com/P1vlT1T.jpeg" alt="Su-35 Flanker-E">
+                </div>
+                <div class="fighter-info">
+                    <h3>Su-35 Flanker-E</h3>
+                    <p><strong>Geração:</strong> 4++</p>
+                    <p><strong>Função:</strong> Caça multiuso</p>
+                    <p><strong>Velocidade:</strong> Mach 2.25</p>
+                    <p><strong>Armamento:</strong> Mísseis R-77, R-73, canhão GSh-30-1</p>
+                    <p>Considerado um dos melhores caças não-stealth do mundo, o Su-35 possui empuxo vetorial 3D, radar Irbis-E com alcance de 400km e grande capacidade de carga bélica.</p>
+                </div>
+            </div>
+            
+            <div class="fighter-card fade-in">
+                <div class="fighter-image">
+                    <img src="https://i.imgur.com/j66k8N6.jpeg" alt="MiG-35 Fulcrum-F">
+                </div>
+                <div class="fighter-info">
+                    <h3>MiG-35 Fulcrum-F</h3>
+                    <p><strong>Geração:</strong> 4++</p>
+                    <p><strong>Função:</strong> Caça multiuso leve</p>
+                    <p><strong>Velocidade:</strong> Mach 2.25</p>
+                    <p><strong>Armamento:</strong> Mísseis R-77, R-73, canhão GSh-30-1</p>
+                    <p>Atualização do clássico MiG-29, com radar AESA Zhuk-M, maior alcance e aviônicos modernos, mantendo a excelente manobrabilidade da série MiG-29.</p>
+                </div>
+            </div>
+
+            <div class="fighter-card fade-in">
+                <div class="fighter-image">
+                    <img src="https://i.imgur.com/nOJaCwL.jpeg" alt="Su-57 Felon">
+                </div>
+                <div class="fighter-info">
+                    <h3>Su-57 Felon</h3>
+                    <p><strong>Geração:</strong> 5ª</p>
+                    <p><strong>Função:</strong> Caça furtivo multiuso</p>
+                    <p><strong>Velocidade:</strong> Mach 2.0</p>
+                    <p><strong>Armamento:</strong> Mísseis R-77M, R-74, K-77M, canhão interno de 30mm</p>
+                    <p>O Su-57 é o primeiro caça stealth russo de quinta geração. Combina furtividade, supermanobrabilidade, radar AESA, capacidade supersônica sustentada (supercruise) e integração de inteligência artificial.</p>
+                </div>
+            </div>
+
+            <div class="fighter-card fade-in">
+                <div class="fighter-image">
+                    <img src="https://i.imgur.com/SZXaYZm.jpeg" alt="Su-30SM Flanker-C">
+                </div>
+                <div class="fighter-info">
+                    <h3>Su-30SM Flanker-C</h3>
+                    <p><strong>Geração:</strong> 4+</p>
+                    <p><strong>Função:</strong> Caça multifunção biplace</p>
+                    <p><strong>Velocidade:</strong> Mach 2.0</p>
+                    <p><strong>Armamento:</strong> Mísseis R-77, R-27, Kh-31, canhão GSh-30-1</p>
+                    <p>Versão avançada do Su-30 com aviônica russa moderna, empuxo vetorial e radar phased array, ideal para combate ar-ar e ataques de precisão ar-solo.</p>
+                </div>
+            </div>
+            <div class="fighter-card fade-in">
+                <div class="fighter-image">
+                    <img src="https://i.imgur.com/DSUQfDL.jpeg" alt="MiG-29 Fulcrum">
+                </div>
+                <div class="fighter-info">
+                    <h3>MiG-29 Fulcrum</h3>
+                    <p><strong>Geração:</strong> 4ª</p>
+                    <p><strong>Função:</strong> Caça leve de superioridade aérea</p>
+                    <p><strong>Velocidade:</strong> Mach 2.25</p>
+                    <p><strong>Armamento:</strong> Mísseis R-73, R-27, canhão GSh-30-1</p>
+                    <p>Um dos caças mais icônicos da Guerra Fria, o MiG-29 é ágil, confiável e ainda amplamente utilizado, com diversas modernizações ao longo das décadas.</p>
+                </div>
+            </div>
+            <div class="fighter-card fade-in">
+                <div class="fighter-image">
+                    <img src="https://i.imgur.com/KkbjjSm.jpeg" alt="Su-27 Flanker-B">
+                </div>
+                <div class="fighter-info">
+                    <h3>Su-27 Flanker-B</h3>
+                    <p><strong>Geração:</strong> 4ª</p>
+                    <p><strong>Função:</strong> Caça de superioridade aérea</p>
+                    <p><strong>Velocidade:</strong> Mach 2.35</p>
+                    <p><strong>Armamento:</strong> Mísseis R-27, R-73, canhão GSh-30-1</p>
+                    <p>Desenvolvido para rivalizar com o F-15, o Su-27 tem alta manobrabilidade, longo alcance e grande capacidade de armamento. É a base para muitos caças modernos russos.</p>
+                </div>
+            </div>
+            <div class="fighter-card fade-in">
+                <div class="fighter-image">
+                    <img src="https://i.imgur.com/MhC9NMZ.jpeg" alt="Su-34 Fullback">
+                </div>
+                <div class="fighter-info">
+                    <h3>Su-34 Fullback</h3>
+                    <p><strong>Geração:</strong> 4++</p>
+                    <p><strong>Função:</strong> Bombardeiro tático</p>
+                    <p><strong>Velocidade:</strong> Mach 1.8</p>
+                    <p><strong>Armamento:</strong> Mísseis ar-terra, bombas guiadas, canhão de 30mm</p>
+                    <p>O Su-34 é uma evolução do Su-27 com cabine blindada lado a lado. Tem alcance estendido, radar de ataque terrestre e grande capacidade para missões de bombardeio preciso.</p>
+                </div>
+            </div>            
+        </div>
+    </section>
+
     <!-- Galeria -->
     <section id="galeria">
         <h2 class="section-title fade-in">Galeria</h2>
@@ -697,18 +892,6 @@
                 <img src="https://i.imgur.com/LSQiLFW.jpeg" alt="Su-27 em exibição">
                 <div class="gallery-caption">
                     <h3>Su-27 em exibição aérea</h3>
-                </div>
-            </div>
-            <div class="gallery-item fade-in">
-                <img src="https://i.imgur.com/U4dTFZF.jpeg" alt="Putin em cima de um urso">
-                <div class="gallery-caption">
-                    <h3>Putin em cima de um urso</h3>
-                </div>
-            </div>
-            <div class="gallery-item fade-in">
-                <img src="https://i.imgur.com/KlUwJPg.jpeg" alt="Jair Messias Bolsonaro Kwaii (⁎˃ᴗ˂⁎)">
-                <div class="gallery-caption">
-                    <h3>Jair Messias Bolsonaro Kwaii (⁎˃ᴗ˂⁎)</h3>
                 </div>
             </div>
         </div>
@@ -813,22 +996,19 @@
     </section>
 
     <!-- Footer -->
-<footer>
-    <div class="social-links">
-        <a href="https://github.com/bruno-moura-2804" class="social-link" target="_blank">
-            <i class="fab fa-github"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/bruno-henrique2804" class="social-link" target="_blank">
-            <i class="fab fa-linkedin"></i>
-        </a>
-        <a href="https://www.instagram.com/bh.moura28?igsh=cmY1d2kyZ3pheDhl" class="social-link" target="_blank">
-            <i class="fab fa-instagram"></i>
-        </a>
-    </div>
-</footer>
-
+    <footer>
+        <div class="social-links">
+            <a href="https://github.com/bruno-moura-2804" class="social-link" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/bruno-henrique2804" class="social-link" target="_blank">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://www.instagram.com/bh.moura28?igsh=cmY1d2kyZ3pheDhl" class="social-link" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
         </div>
-        <p class="copyright">© 2025 Avinhões de Combate Russos. Todos os direitos reservados.</p>
+        <p class="copyright">© 2025 Avinhões de Combate Russos | Bruno Moura. Todos os direitos reservados.</p>
     </footer>
 
     <!-- Botão de voltar ao topo -->
@@ -837,70 +1017,69 @@
     </div>
 
     <script>
-        // Efeito sonoro opcional
+        // Efeito de carregamento
         document.addEventListener('DOMContentLoaded', function() {
-            const engineSound = document.getElementById('engineSound');
-            engineSound.volume = 0.3;
-            
-            // Opção para tocar o som quando o usuário interagir com a página
-            document.addEventListener('click', function() {
-                engineSound.play().catch(e => console.log("Autoplay prevented"));
-            }, { once: true });
-            
-            // Marcar o body como carregado para a animação
-            document.body.classList.add('loaded');
+            setTimeout(function() {
+                document.body.classList.add('loaded');
+            }, 500);
         });
-
-        // Navbar mobile
+    
+        // Menu hamburguer para mobile
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
-
-        hamburger.addEventListener('click', () => {
+        
+        hamburger.addEventListener('click', function() {
             navLinks.classList.toggle('active');
-            hamburger.innerHTML = navLinks.classList.contains('active') ? 
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            this.querySelector('i').classList.toggle('fa-times');
+            this.querySelector('i').classList.toggle('fa-bars');
         });
-
+    
         // Fechar menu ao clicar em um link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
-                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                hamburger.querySelector('i').classList.remove('fa-times');
+                hamburger.querySelector('i').classList.add('fa-bars');
             });
         });
-
-        // Scroll suave para links internos
+    
+        // Scroll suave para as seções
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70,
                     behavior: 'smooth'
                 });
             });
         });
-
+    
         // Botão de voltar ao topo
         const backToTopButton = document.querySelector('.back-to-top');
-
-        window.addEventListener('scroll', () => {
+        
+        window.addEventListener('scroll', function() {
             if (window.pageYOffset > 300) {
                 backToTopButton.classList.add('active');
             } else {
                 backToTopButton.classList.remove('active');
             }
         });
-
-        backToTopButton.addEventListener('click', () => {
+        
+        backToTopButton.addEventListener('click', function() {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
         });
-
-        // Animação de aparecimento ao rolar
+    
+        // Efeito de fade-in nas seções conforme rolagem
         const fadeElements = document.querySelectorAll('.fade-in');
-
-        const fadeInOnScroll = () => {
+        
+        function checkFade() {
             fadeElements.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
                 const windowHeight = window.innerHeight;
@@ -910,13 +1089,46 @@
                     element.style.transform = 'translateY(0)';
                 }
             });
-        };
-
-        // Verificar elementos visíveis ao carregar
-        fadeInOnScroll();
-
-        // Verificar elementos visíveis ao rolar
-        window.addEventListener('scroll', fadeInOnScroll);
+        }
+        
+        window.addEventListener('scroll', checkFade);
+        window.addEventListener('load', checkFade);
+    
+        // Efeito de hover nos cards de caças
+        const fighterCards = document.querySelectorAll('.fighter-card');
+        
+        fighterCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+                this.style.boxShadow = '0 15px 30px rgba(230, 57, 70, 0.4)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 5px 15px rgba(230, 57, 70, 0.3)';
+            });
+        });
+    
+        // Controle de vídeos na galeria
+        const galleryVideos = document.querySelectorAll('.gallery-item video');
+        
+        galleryVideos.forEach(video => {
+            const galleryItem = video.closest('.gallery-item');
+            
+            galleryItem.addEventListener('mouseenter', function() {
+                video.play();
+            });
+            
+            galleryItem.addEventListener('mouseleave', function() {
+                video.pause();
+                video.currentTime = 0;
+            });
+        });
+    
+        // Atualização dinâmica do ano no footer
+        const copyrightElement = document.querySelector('.copyright');
+        if (copyrightElement) {
+            const currentYear = new Date().getFullYear();
+            copyrightElement.textContent = copyrightElement.textContent.replace('2025', currentYear);
+        }
     </script>
-</body>
-</html>
